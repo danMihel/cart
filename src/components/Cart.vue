@@ -23,13 +23,21 @@
                 <div class="cart-header__clear-btn" @click="$store.commit('clearCart')">Очистить корзину</div>
             </div>
             <div class="cart-detail" v-if="$store.state.cart.length > 0">
-                <div class="cart-detail__left-side">
-                        <div class="product" v-for="item in $store.state.cart" :key="item.id">
-                            <Product :product="item" :key="item.title"/>
-                        </div>
+                <div class="cart-detail__left-side ">
                     <div>
+                        <div class="product" v-for="item in $store.state.cart" :key="item.id">
+                            <Product :product="item" :key="item.title" class="product-container"/>
+                        </div>
+                    </div>
+                    <div class="install-block">
                         <input type="checkbox" @click="$store.commit('setInstall')" name="install" />
-                        <label for="install">Установка</label>
+                        <img src="@/assets/wrench.png" />
+                        <div class="install-block__text">
+                            <div class="install-block__title">Установка</div>
+                            <div class="install-block__subtitle">Отметьте, если Вам необходима консультация
+                                профессионала по монтажу выбранных товаров.
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="cart-detail__right-side">
@@ -81,9 +89,10 @@ export default {
 }
 </script>
 <style>
-.prod:not(:last-child){
-   border-bottom: 1px #C4C4C4 solid;
+.prod:not(:last-child) {
+    border-bottom: 1px #C4C4C4 solid;
 }
+
 .wrap {
     margin: auto;
     max-width: 1440px;
@@ -193,16 +202,17 @@ export default {
     cursor: pointer;
 }
 
-.product-container {
+.product-container:last-child {
     width: 100%;
     display: inline-flex;
     align-items: center;
     align-content: space-around;
     padding: 20px;
+    
 }
-
-.product:not(:last-child){
-   border-bottom: 1px #C4C4C4 solid;
+ 
+.product:not(:last-child) {
+    border-bottom: 1px #C4C4C4 solid;
 }
 
 .cart-detail {
@@ -217,5 +227,40 @@ export default {
 
 .cart-detail__right-side {
     width: 40%;
+}
+
+.install-block {
+    background: #F6F8FA;
+    border-radius: 5px;
+    padding: 26px;
+    display: flex;
+    align-items: center;
+}
+
+.install-block img {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.install-block__text {
+    text-align: left;
+}
+
+.install-block__title {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 145%;
+    color: #1F2432;
+}
+
+.install-block__subtitle {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    color: #797B86;
 }
 </style>
