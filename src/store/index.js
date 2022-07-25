@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+import axios from "axios";
 
 export default createStore({
   state: {
@@ -85,6 +86,29 @@ export default createStore({
     },
   },
   actions: {   
+      sendCart() {
+        axios({
+            method: 'post',
+            url: 'https://jsonplaceholder.typicode.com/posts',
+            params: {
+              user_key_id: 'USER_KEY_ID',
+            },
+            data: {
+              products: this.state.cart,
+              install: this.state.install,
+            },
+            headers: {
+              "Content-type": "application/json; charset=UTF-8"
+            }
+          })
+          .then(function(response) {
+            console.log('Ответ сервера успешно получен!');
+            console.log(response.data);
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
+      }
   },
   modules: {},
 });

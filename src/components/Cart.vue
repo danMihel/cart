@@ -29,6 +29,7 @@
             <p class="navbar-item">
                 Стоимость товара {{ $store.state.cartTotalPrice }} руб
             </p>
+            <button @click="$store.dispatch('sendCart')">Оформить заказ</button>
         </div>
 
         <div v-else class="navbar-dropdown is-boxed is-right">
