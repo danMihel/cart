@@ -26,7 +26,7 @@
                 <div class="cart-detail__left-side ">
                     <div>
                         <div class="product" v-for="item in $store.state.cart" :key="item.id">
-                            <Product :product="item" :key="item.title" class="product-container"/>
+                            <Product :product="item" :key="item.title" class="product-container" />
                         </div>
                     </div>
                     <div class="install-block">
@@ -41,25 +41,48 @@
                     </div>
                 </div>
                 <div class="cart-detail__right-side">
-                    <div class="navbar-item">
-                        Итого:
-                        <p>Сумма заказа {{ $store.state.cartTotalPrice.toLocaleString('ru-RU') }} руб</p>
-                        <p> Количество {{ $store.state.cartCount }} </p>
-                        <p> Установка:
-                            <span v-if="$store.state.install === true"> да </span>
-                            <span v-else> нет</span>
-                        </p>
+                    <div class="sum">
+                        <p class="sum__title">Итого:</p>
+                        <div class="sum__row">
+                            <div class="sum__subtitle">Сумма заказа </div>
+                            <div class="sum__subtitle">{{ $store.state.cartTotalPrice.toLocaleString('ru-RU') }}
+                                &#8381;</div>
+                        </div>
+                        <div class="sum__row">
+                            <div class="sum__subtitle">
+                                Количество
+                            </div>
+                            <div class="sum__subtitle">
+                                {{ $store.state.cartCount }} шт
+                            </div>
+                        </div>
+                        <div class="sum__row">
+                            <div class="sum__subtitle">
+                                Установка:
+                            </div>
+                            <div class="sum__subtitle">
+                                <div class="sum__subtitle" v-if="$store.state.install === true"> Да </div>
+                                <div class="sum__subtitle" v-else> Нет</div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="sum__row">
+                            <div class="sum__calc-text">
+                                Стоимость товара
+                            </div>
+                            <div class="sum__calc-value">
+                                {{ $store.state.cartTotalPrice.toLocaleString('ru-RU') }} &#8381;
+                            </div>
+                        </div>
+                        <button class="order-btn" @click="$store.dispatch('sendCart')">Оформить заказ</button>
+                        <button class="order-btn-express" @click="$store.dispatch('sendCart')">Купить в 1 клик</button>
                     </div>
-                    <p class="navbar-item">
-                        Стоимость товара {{ $store.state.cartTotalPrice.toLocaleString('ru-RU') }} руб
-                    </p>
-                    <button @click="$store.dispatch('sendCart')">Оформить заказ</button>
                 </div>
             </div>
             <div v-else class="navbar-dropdown is-boxed is-right">
-                <a class="navbar-item" href="">
+                <div class="">
                     Корзина пуста
-                </a>
+                </div>
             </div>
         </section>
     </div>
@@ -89,9 +112,6 @@ export default {
 }
 </script>
 <style>
-.prod:not(:last-child) {
-    border-bottom: 1px #C4C4C4 solid;
-}
 
 .wrap {
     margin: auto;
@@ -208,9 +228,9 @@ export default {
     align-items: center;
     align-content: space-around;
     padding: 20px;
-    
+
 }
- 
+
 .product:not(:last-child) {
     border-bottom: 1px #C4C4C4 solid;
 }
@@ -223,6 +243,7 @@ export default {
 
 .cart-detail__left-side {
     width: 60%;
+    margin: 10px;
 }
 
 .cart-detail__right-side {
@@ -262,5 +283,104 @@ export default {
     font-size: 14px;
     line-height: 150%;
     color: #797B86;
+}
+
+.sum {
+    background: #F6F8FA;
+    border-radius: 5px;
+    margin-left: 10%;
+    padding: 35px;
+}
+
+.sum__title {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 120.52%;
+    color: #1F2432;
+    text-align: left;
+}
+
+.sum__row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 17px;
+}
+
+.sum__subtitle {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 145%;
+    color: #1F2432;
+    text-align: left;
+}
+
+.sum__calc-text {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 145%;
+    color: #1F2432;
+}
+
+.sum__calc-value {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 130%;
+    letter-spacing: 0.005em;
+    color: #1F2432;
+}
+
+.order-btn {
+    background: #0069B4;
+    border-radius: 4px;
+    border: none;
+    width: 100%;
+    height: 54px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 145%;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+}
+
+.order-btn-express {
+    background: #FFFFFF;
+    border-radius: 4px;
+    border: 1px solid #0069B4;
+    width: 100%;
+    height: 54px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 145%;
+    color: #0069B4;
+}
+
+.order-btn:hover {
+    background-color: #053e68;
+    transition: 0.2s linear;
+}
+.order-btn:active {
+    background-color: #8a8d99;
+    border: #4f505228 solid 3px;
+}
+
+.order-btn-express:hover {
+   border: 1px solid #053e68;
+    transition: 0.2s linear;
+}
+.order-btn-express:active {
+    background-color: #8a8d99;
+    color: #fdfdfd;
 }
 </style>
