@@ -76,7 +76,11 @@ export default createStore({
         let product = state.cart[index];
         state.cartCount -= product.quantity;
         state.cart.splice(index, 1);
-      } 
+       }  
+       item.amount = 0
+
+      this.commit("setCartCount")
+      this.commit("cartTotalPrice")
     },
     setCartCount(state) {
       let total = 0;

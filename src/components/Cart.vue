@@ -7,7 +7,7 @@
 
         <div v-if="$store.state.cart.length > 0" class="card-container">
             <p v-for="item in $store.state.cart" :key="item.id" class="card" href="">
-                <span class="removeBtn" title="Удалить из корзины" @click.prevent="removeFromCart(item)">X</span>
+                <span class="removeBtn" title="Удалить из корзины" @click.prevent="$store.commit('removeFromCart', item)">X</span>
                 <Product :product="item" :key="item.title" />
             </p>
             <div>
