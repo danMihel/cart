@@ -14,8 +14,6 @@
                 <input type="checkbox" @click=" $store.commit('setInstall')" name="install" />
                 <label for="install">Установка</label>
             </div>
-
-
             <div class="navbar-item">
                 Итого:
                 <p>Сумма заказа {{ $store.state.cartTotalPrice }} руб</p>
