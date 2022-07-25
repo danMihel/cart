@@ -43,24 +43,19 @@ export default createStore({
   },
   mutations: {
     setInstall(state){
-      console.log(state.install)
-      state.install == false ? state.install = true : state.install = false 
-
-
+      state.install == true ? state.install = false : state.install = true 
     },
     cartTotalPrice(state) {
       state.cartTotalPrice  = 0; 
       for (let item of state.cart) {
         state.cartTotalPrice += item.price * item.amount;
       }
-      console.log('TP mounted')
       return state.cartTotalPrice.toFixed(2);
   },
     multiPriceIncrise(state, item) {
       let found = state.cart.find((i) => i.id == item.id);
       found.amount += 1;
       found.totalPrice = found.amount * found.price;
-      console.log(found.amount);
       this.commit("cartTotalPrice")
       this.commit("setCartCount")
     },
@@ -69,15 +64,12 @@ export default createStore({
       if (found.amount > 0) {
         found.amount -= 1;
         found.totalPrice = found.amount * found.price;
-        console.log(found.amount);
         this.commit("cartTotalPrice")
         this.commit("setCartCount")
       } 
     },
-
     removeFromCart(state, item) {
       let index = state.cart.indexOf(item);
-      item
       if (index > -1) {
         let product = state.cart[index];
         state.cartCount -= product.quantity;
@@ -88,13 +80,11 @@ export default createStore({
       let total = 0;
       for (let item of state.cart) {
         total +=item.amount
-        console.log(item.amount)
       }
       state.cartCount = total;
     },
   },
-  actions: {
-    
+  actions: {   
   },
   modules: {},
 });
