@@ -1,6 +1,5 @@
 import { createStore } from "vuex";
 import axios from "axios";
-
 export default createStore({
   state: {
     cart: [
@@ -13,6 +12,7 @@ export default createStore({
         price: 12644,
         amount: 1,
         totalPrice: 12644,
+        image: require("@/assets/g2h.png")
       },
       {
         id: 2,
@@ -23,6 +23,7 @@ export default createStore({
         price: 12644,
         amount: 1,
         totalPrice: 12644,
+        image: require("@/assets/bhc.png")
       },
       {
         id: 3,
@@ -33,6 +34,7 @@ export default createStore({
         price: 12644,
         amount: 1,
         totalPrice: 12644,
+        image: require("@/assets/ghn.png")
       },
     ],
     cartCount: 0,
@@ -44,6 +46,9 @@ export default createStore({
    
   },
   mutations: {
+    clearCart(state){
+      state.cart=[]
+    },
     setInstall(state){
       state.install == true ? state.install = false : state.install = true 
     },
