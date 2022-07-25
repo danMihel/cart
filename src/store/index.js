@@ -37,7 +37,8 @@ export default createStore({
     ],
     cartCount: 0,
     cartTotalPrice: 0,
-    install: false
+    install: false,
+    user: 'test_user'
   },
   getters: {
    
@@ -91,9 +92,10 @@ export default createStore({
             method: 'post',
             url: 'https://jsonplaceholder.typicode.com/posts',
             params: {
-              user_key_id: 'USER_KEY_ID',
+              user_key_id: this.user_key_id,
             },
             data: {
+              userID: this.state.user,
               products: this.state.cart,
               install: this.state.install,
             },
