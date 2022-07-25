@@ -376,7 +376,7 @@ export default {
 }
 
 .order-btn-express:hover {
-   border: 1px solid #053e68;
+   border: 2px solid #0069B4;
     transition: 0.2s linear;
 }
 .order-btn-express:active {
