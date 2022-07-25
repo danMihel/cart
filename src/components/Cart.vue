@@ -1,26 +1,35 @@
 <template>
-    <div class=""><p>{{$store.state.cart.length}}</p>
+    <div class="">
+        <p>{{ $store.state.cart.length }}</p>
         <p class="navbar-link" href="">
-           Ваша корзина ({{ $store.state.cartCount }})
+            Ваша корзина ({{ $store.state.cartCount }})
         </p>
 
         <div v-if="$store.state.cart.length > 0" class="card-container">
-            <a v-for="item in $store.state.cart" :key="item.id" class="card" href="">
+            <p v-for="item in $store.state.cart" :key="item.id" class="card" href="">
                 <span class="removeBtn" title="Удалить из корзины" @click.prevent="removeFromCart(item)">X</span>
                 <Product :product="item" :key="item.title" />
-            </a>
+            </p>
+            <div>
+                <input type="checkbox" @click=" $store.commit('setInstall')" name="install" />
+                <label for="install">Установка</label>
+            </div>
+
 
             <div class="navbar-item">
                 Итого:
                 <p>Сумма заказа {{ $store.state.cartTotalPrice }} руб</p>
                 <p> Количество {{ $store.state.cartCount }} </p>
-
+                <p> Установка:
+                    <span v-if="$store.state.install === true"> да </span>
+                    <span v-else> нет</span>
+                </p>
             </div>
 
             <hr class="navbar-divider">
 
             <p class="navbar-item">
-               Стоимость товара {{ $store.state.cartTotalPrice }} руб
+                Стоимость товара {{ $store.state.cartTotalPrice }} руб
             </p>
         </div>
 
@@ -40,7 +49,7 @@ export default {
         Product
     },
     computed: {
-      
+
     },
     methods: {
         removeFromCart(item) {

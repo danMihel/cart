@@ -35,12 +35,19 @@ export default createStore({
       },
     ],
     cartCount: 0,
-    cartTotalPrice: 0
+    cartTotalPrice: 0,
+    install: false
   },
   getters: {
    
   },
   mutations: {
+    setInstall(state){
+      console.log(state.install)
+      state.install == false ? state.install = true : state.install = false 
+
+
+    },
     cartTotalPrice(state) {
       state.cartTotalPrice  = 0; 
       for (let item of state.cart) {
