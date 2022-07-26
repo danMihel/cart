@@ -2,6 +2,44 @@ import { createStore } from "vuex";
 import axios from "axios";
 export default createStore({
   state: {
+    watched: [
+      {
+        id: 4,
+        title: "BXC",
+        content:
+          "Вытяжное устройство для механической системы вентиляции",
+        price: '6 848 ₽ – 56 584 ₽' ,
+        euroPrice: '77.60 € – 643.86 €',
+        image: require("@/assets/bhc-big.png")
+      },
+      {
+        id: 5,
+        title: "G2H",
+        content:
+          "Многофункциональное вытяжное устройство для естественной и гибридной вентиляции",
+        price: '6 848 ₽ – 56 584 ₽ ' ,
+        euroPrice: '77.60 € – 643.86 €',
+        image: require("@/assets/g2h-big.png")
+      },
+      {
+        id: 6,
+        title: "GHN",
+        content:
+          "Вытяжное устройство с датчиком присутствия",
+        price: '6 848 ₽ – 56 584 ₽ ' ,
+        euroPrice: '77.60 € – 643.86 €',
+        image: require("@/assets/ghn-big.png")
+      },
+      {
+        id: 7,
+        title: "TDA",
+        content:
+          "Вытяжное устройство с датчиком присутствия",
+        price: '6 848 ₽ – 56 584 ₽ ' ,
+        euroPrice: '77.60 € – 643.86 €',
+        image: require("@/assets/tda-big.png")
+      },
+    ],
     cart: [
       {
         id: 1,

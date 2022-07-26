@@ -11,7 +11,7 @@
                 <img src="@/assets/cart_logo.png" />
             </div>
         </div>
-        <section>
+        <section class="cart-wraper">
             <nav class="nav">
                 <a class="nav__item"> Главная </a>
                 <img class="nav__item" src="@/assets/dot.png" />
@@ -85,15 +85,18 @@
                 </div>
             </div>
         </section>
+        <Slider/>
     </div>
 </template>
 
 <script>
 import Product from "@/components/Product.vue";
+import Slider from "@/components/Slider.vue"
 export default {
     name: "Cart",
     components: {
-        Product
+        Product,
+        Slider
     },
     computed: {
 
@@ -108,14 +111,16 @@ export default {
         this.$store.commit("setCartCount");
         this.$store.commit('cartTotalPrice')
     },
-    components: { Product }
 }
 </script>
 <style>
-
 .wrap {
     margin: auto;
     max-width: 1440px;
+}
+
+.cart-wraper{
+    margin-bottom: 90px;
 }
 
 .mini-cart {
@@ -370,15 +375,17 @@ export default {
     background-color: #053e68;
     transition: 0.2s linear;
 }
+
 .order-btn:active {
     background-color: #8a8d99;
     border: #4f505228 solid 3px;
 }
 
 .order-btn-express:hover {
-   border: 2px solid #0069B4;
+    border: 2px solid #0069B4;
     transition: 0.2s linear;
 }
+
 .order-btn-express:active {
     background-color: #8a8d99;
     color: #fdfdfd;
