@@ -4,7 +4,7 @@ export default createStore({
   state: {
     watched: [
       {
-        id: 4,
+        id: 51,
         title: "BXC",
         content:
           "Вытяжное устройство для механической системы вентиляции",
@@ -13,7 +13,7 @@ export default createStore({
         image: require("@/assets/bhc-big.png")
       },
       {
-        id: 5,
+        id: 52,
         title: "G2H",
         content:
           "Многофункциональное вытяжное устройство для естественной и гибридной вентиляции",
@@ -22,7 +22,7 @@ export default createStore({
         image: require("@/assets/g2h-big.png")
       },
       {
-        id: 6,
+        id: 53,
         title: "GHN",
         content:
           "Вытяжное устройство с датчиком присутствия",
@@ -31,8 +31,44 @@ export default createStore({
         image: require("@/assets/ghn-big.png")
       },
       {
-        id: 7,
+        id: 54,
         title: "TDA",
+        content:
+          "Вытяжное устройство с датчиком присутствия",
+        price: '6 848 ₽ – 56 584 ₽ ' ,
+        euroPrice: '77.60 € – 643.86 €',
+        image: require("@/assets/tda-big.png")
+      },
+      {
+        id: 55,
+        title: "BXC/2",
+        content:
+          "Вытяжное устройство для механической системы вентиляции",
+        price: '6 848 ₽ – 56 584 ₽' ,
+        euroPrice: '77.60 € – 643.86 €',
+        image: require("@/assets/bhc-big.png")
+      },
+      {
+        id: 56,
+        title: "G2H/2",
+        content:
+          "Многофункциональное вытяжное устройство для естественной и гибридной вентиляции",
+        price: '6 848 ₽ – 56 584 ₽ ' ,
+        euroPrice: '77.60 € – 643.86 €',
+        image: require("@/assets/g2h-big.png")
+      },
+      {
+        id: 57,
+        title: "GHN/2",
+        content:
+          "Вытяжное устройство с датчиком присутствия",
+        price: '6 848 ₽ – 56 584 ₽ ' ,
+        euroPrice: '77.60 € – 643.86 €',
+        image: require("@/assets/ghn-big.png")
+      },
+      {
+        id: 58,
+        title: "TDA/2",
         content:
           "Вытяжное устройство с датчиком присутствия",
         price: '6 848 ₽ – 56 584 ₽ ' ,
@@ -78,12 +114,26 @@ export default createStore({
     cartCount: 0,
     cartTotalPrice: 0,
     install: false,
-    user: 'test_user'
+    user: 'test_user',
+    sliderCounter: 1
   },
   getters: {
    
   },
   mutations: {
+    incSlide(state){
+      state.sliderCounter < state.watched.length / 4 ? state.sliderCounter++ : state.sliderCounter = 1,
+      state.watched.unshift(state.watched.pop())
+      
+    },
+    decSlide(state){
+      state.sliderCounter < state.watched.length / 4 ? state.sliderCounter++ : state.sliderCounter = 1
+      let i = 0;
+      while (i<4){
+      state.watched.push(state.watched.shift()) 
+      i++
+    }    
+    },
     clearCart(state){
       state.cart=[]
     },
