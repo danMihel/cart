@@ -122,17 +122,13 @@ export default createStore({
   },
   mutations: {
     incSlide(state){
-      state.sliderCounter < state.watched.length / 4 ? state.sliderCounter++ : state.sliderCounter = 1,
+      state.sliderCounter < state.watched.length  ? state.sliderCounter++ : state.sliderCounter = 1,
       state.watched.unshift(state.watched.pop())
       
     },
     decSlide(state){
-      state.sliderCounter < state.watched.length / 4 ? state.sliderCounter++ : state.sliderCounter = 1
-      let i = 0;
-      while (i<4){
-      state.watched.push(state.watched.shift()) 
-      i++
-    }    
+      state.sliderCounter > 1  ? state.sliderCounter-- : state.sliderCounter = 8,
+      state.watched.push(state.watched.shift())   
     },
     clearCart(state){
       state.cart=[]
