@@ -87,6 +87,7 @@ export default {
     transform: rotate(-90deg);
     font-size: 1.5rem;
     margin-right: 8px;
+    cursor: pointer;
 
 }
 
