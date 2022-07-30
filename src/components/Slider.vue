@@ -15,7 +15,6 @@
         </div>
     </div>
     <div class="slider">
-        <transition-group>
             <div v-for="item in $store.state.watched.slice(0, 4)" :key="item.id">
                 <div class="slider__items">
                     <img class="slider__img" :src="item.image" />
@@ -30,7 +29,6 @@
                     <button class="slider-btn">Подробнее</button>
                 </div>
             </div>
-        </transition-group>
     </div>
 
 
