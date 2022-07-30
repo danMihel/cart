@@ -95,9 +95,9 @@ import Slider from "@/components/Slider.vue"
 export default {
     name: "Cart",
     components: {
-        Product,
-        Slider
-    },
+    Product,
+    Slider,
+},
     computed: {
 
     },
