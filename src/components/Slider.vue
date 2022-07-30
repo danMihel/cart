@@ -6,14 +6,16 @@
                 &and;
             </div>
             <div class="slider-btn-group__curent-slide-number">{{ $store.state.sliderCounter }}</div>
-            <div class="slider-btn-group__total-slide-number"> <span class="slider-btn-group__dash"> /</span> {{ $store.state.watched.length}} </div>
+            <div class="slider-btn-group__total-slide-number"> <span class="slider-btn-group__dash"> /</span> {{
+                    $store.state.watched.length
+            }} </div>
             <div class="slider-btn-group__btn" @click="$store.commit('decSlide')">
                 &or;
             </div>
         </div>
     </div>
     <div class="slider">
-        <transition-group name="slider_anim-wraper">
+        <transition-group>
             <div v-for="item in $store.state.watched.slice(0, 4)" :key="item.id">
                 <div class="slider__items">
                     <img class="slider__img" :src="item.image" />
@@ -21,7 +23,7 @@
                         <div class="slider__title">{{ item.title }}</div>
                         <div class="slider__cont">{{ item.content }}</div>
                     </div>
-                    <div >
+                    <div>
                         <div class="slider__price">{{ item.price }} </div>
                         <div class="slider__euro-price">{{ item.euroPrice }}</div>
                     </div>
@@ -35,7 +37,25 @@
 </template>
 <script>
 export default {
-    name: 'slider'
+    name: 'slider',
+    data() {
+        return {
+            show: false,
+            hide: false,
+
+        }
+
+    },
+    methods: {
+        addClass() {
+            if (this.show === false) {
+                this.show = true
+            }if(this.show === false){
+                 this.hide = true
+            }
+        },
+
+    }
 }
 
 </script>
@@ -47,7 +67,7 @@ export default {
 
 .slider_anim-wraper-enter-active,
 .slider_anim-wraper-leave-active {
-     opacity: 1;
+    opacity: 1;
     transition: all 0.5s ease;
 }
 
@@ -112,6 +132,21 @@ export default {
     padding: 20px;
     background: #F6F8FA;
     border-radius: 5px;
+     animation: 1s show ease;
+
+}
+
+.showProduct {
+   
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .slider__title {
@@ -132,9 +167,9 @@ export default {
     color: #1F2432;
 }
 
-.slider-prise-container{
+.slider-prise-container {
     margin: 14px;
-   
+
 }
 
 .slider__price {
@@ -189,12 +224,13 @@ export default {
     line-height: 130%;
     display: flex;
     margin-top: 12px;
-    align-items:baseline;
+    align-items: baseline;
     margin-right: 10px;
 }
-.slider-btn-group__dash{
-     font-size: 23px;
-     margin-right: 5px;
+
+.slider-btn-group__dash {
+    font-size: 23px;
+    margin-right: 5px;
 }
 
 .slider-btn:hover {

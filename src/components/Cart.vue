@@ -92,6 +92,7 @@
 <script>
 import Product from "@/components/Product.vue";
 import Slider from "@/components/Slider.vue"
+
 export default {
     name: "Cart",
     components: {
