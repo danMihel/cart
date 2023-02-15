@@ -3,7 +3,7 @@
         <div class="mini-cart">
             <div class="mini-cart__slots">
                 <span class="mini-cart__title"> Ваша корзина</span>
-                <span class="mini-cart__card-count">{{ $store.state.cart.length }} товара</span>
+                <span class="mini-cart__card-count">{{ $store.state.cartCount }} товара</span>
                 <span class="mini-cart__price-text">{{ $store.state.cartTotalPrice.toLocaleString('ru-RU')
                 }} &#8381;</span>
             </div>

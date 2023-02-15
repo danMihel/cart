@@ -131,7 +131,9 @@ export default createStore({
       state.watched.push(state.watched.shift())   
     },
     clearCart(state){
-      state.cart=[]
+      state.cart = []
+      state.cartCount = 0
+      state.cartTotalPrice = 0
     },
     setInstall(state){
       state.install == true ? state.install = false : state.install = true 
